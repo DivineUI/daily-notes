@@ -1,0 +1,359 @@
+:root {
+    --desk: #dfe6e0;
+    --note: #fff08a;
+    --note-edge: #e9d764;
+    --ink: #2b2a22;
+    --muted: #7d7a5c;
+    --pen: #2457d6;
+    --line: rgba(43, 42, 34, 0.18);
+    --field: rgba(255, 255, 255, 0.55);
+    --hand: "Segoe Print", "Bradley Hand", "Chalkboard SE", "Comic Sans MS", cursive;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --desk: #1b2124;
+        --note: #4b4522;
+        --note-edge: #5d5629;
+        --ink: #f6eeb8;
+        --muted: #b9b07a;
+        --pen: #8fb0ff;
+        --line: rgba(246, 238, 184, 0.2);
+        --field: rgba(0, 0, 0, 0.25);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--desk);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: 28px 14px 48px;
+}
+
+.note {
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 34px 22px 22px;
+    background: var(--note);
+    border-radius: 3px 3px 3px 14px;
+    box-shadow: 0 1px 0 var(--note-edge), 6px 10px 24px rgba(0, 0, 0, 0.18);
+    transform: rotate(-0.4deg);
+}
+
+.tape {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 96px;
+    height: 26px;
+    margin-left: -48px;
+    background: rgba(255, 255, 255, 0.45);
+    transform: rotate(2deg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+h1,
+h2 {
+    font-family: var(--hand);
+    font-weight: 700;
+    margin: 0;
+}
+
+h1 {
+    font-size: 1.9rem;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 1.25rem;
+    margin: 26px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--line);
+}
+
+.daynav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.daytitle {
+    text-align: center;
+    flex: 1;
+}
+
+.daytitle p {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.icon-btn {
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--field);
+    color: var(--ink);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.meter {
+    height: 10px;
+    background: var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.meter.big {
+    height: 16px;
+    margin-top: 16px;
+}
+
+.meter>div {
+    height: 100%;
+    width: 0;
+    background: var(--pen);
+    border-radius: 6px;
+    transition: width 0.35s ease;
+}
+
+#progress-text {
+    margin: 6px 0 0;
+    font-family: var(--hand);
+    font-size: 1.05rem;
+}
+
+.add-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.add-row input[type="text"] {
+    flex: 1;
+    min-width: 0;
+}
+
+input[type="text"],
+input[type="time"] {
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--field);
+    color: var(--ink);
+    font: inherit;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+}
+
+.add-row button,
+.tabs button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--note);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.link {
+    background: none;
+    border: 0;
+    padding: 6px 0;
+    color: var(--pen);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--line);
+}
+
+li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--pen);
+    flex: none;
+}
+
+li .label {
+    flex: 1;
+    word-break: break-word;
+}
+
+li.done .label {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 2px 7px;
+    border-radius: 10px;
+    background: var(--field);
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.del {
+    border: 0;
+    background: none;
+    color: var(--muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 2px 6px;
+}
+
+.empty {
+    color: var(--muted);
+    font-size: 0.95rem;
+    padding: 8px 0;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.tabs button {
+    background: var(--field);
+    color: var(--ink);
+}
+
+.tabs button.active {
+    background: var(--ink);
+    color: var(--note);
+}
+
+.row {
+    margin: 12px 0;
+}
+
+.row-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.row-top span:last-child {
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.chart {
+    display: flex;
+    align-items: stretch;
+    gap: 3px;
+    height: 90px;
+    margin: 8px 0 4px;
+}
+
+.chart .col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart .barwrap {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.chart .bar {
+    width: 100%;
+    background: var(--pen);
+    border-radius: 3px 3px 0 0;
+    min-height: 2px;
+    opacity: 0.85;
+}
+
+.chart small {
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 2px;
+    height: 12px;
+}
+
+footer {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+}
+
+#toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    max-width: 90%;
+    padding: 12px 18px;
+    background: var(--ink);
+    color: var(--note);
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--pen);
+    outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+    .note {
+        transform: none;
+        padding: 30px 16px 18px;
+    }
+
+    .add-row {
+        flex-wrap: wrap;
+    }
+
+    .add-row input[type="text"] {
+        flex-basis: 100%;
+    }
+
+    .add-row input[type="time"] {
+        flex: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .meter>div {
+        transition: none;
+    }
+}

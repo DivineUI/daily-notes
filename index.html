@@ -4,19 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff08a">
     <title>Daily Notes</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Daily Notes</h1>
+    <main class="note">
+        <div class="tape"></div>
 
-    <form id="task-form">
-        <input id="task-input" type="text" placeholder="Add a task..." required>
-        <button type="submit">Add</button>
-    </form>
+        <header>
+            <div class="daynav">
+                <button id="prev" class="icon-btn" title="Previous day">&lsaquo;</button>
+                <div class="daytitle">
+                    <h1 id="day-label">Today</h1>
+                    <p id="day-date"></p>
+                </div>
+                <button id="next" class="icon-btn" title="Next day">&rsaquo;</button>
+            </div>
+            <button id="today-btn" class="link" hidden>Back to today</button>
 
-    <ul id="task-list"></ul>
+            <div class="meter big">
+                <div id="bar"></div>
+            </div>
+            <p id="progress-text"></p>
+        </header>
 
+        <form id="task-form" class="add-row">
+            <input id="task-input" type="text" placeholder="Add a task..." autocomplete="off" required>
+            <input id="task-time" type="time" title="Reminder time (optional)">
+            <button type="submit">Add</button>
+        </form>
+
+        <section>
+            <h2>Tasks</h2>
+            <ul id="task-list"></ul>
+            <button id="carry-btn" class="link" hidden></button>
+        </section>
+
+        <section>
+            <h2>Every day</h2>
+            <ul id="habit-list"></ul>
+            <form id="habit-form" class="add-row">
+                <input id="habit-input" type="text" placeholder="New daily habit (e.g. Drink water)" autocomplete="off"
+                    required>
+                <input id="habit-time" type="time" title="Reminder time (optional)">
+                <button type="submit">Add</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>How I did</h2>
+            <div class="tabs">
+                <button data-range="7" class="active">Last 7 days</button>
+                <button data-range="30">Last 30 days</button>
+            </div>
+            <div id="report"></div>
+        </section>
+
+        <footer>
+            <button id="notify-btn" class="link">Turn on reminders</button>
+            <button id="export-btn" class="link">Back up data</button>
+            <button id="import-btn" class="link">Restore backup</button>
+            <input id="import-file" type="file" accept="application/json" hidden>
+        </footer>
+    </main>
+
+    <div id="toast" role="status" hidden></div>
     <script src="app.js"></script>
 </body>
 
