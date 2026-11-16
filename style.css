@@ -12,14 +12,15 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --desk: #1b2124;
-        --note: #4b4522;
-        --note-edge: #5d5629;
-        --ink: #f6eeb8;
-        --muted: #b9b07a;
-        --pen: #8fb0ff;
-        --line: rgba(246, 238, 184, 0.2);
-        --field: rgba(0, 0, 0, 0.25);
+        --desk: #07090d;
+        --note: #0f1b33;
+        --note-edge: #1a2a4d;
+        --ink: #e6ecf7;
+        --muted: #8fa0bf;
+        --pen: #5b8cff;
+        --line: rgba(230, 236, 247, 0.16);
+        --field: rgba(255, 255, 255, 0.06);
+        --hand: "Segoe Print", "Bradley Hand", "Chalkboard SE", "Comic Sans MS", cursive;
     }
 }
 
@@ -54,7 +55,7 @@ body {
     width: 96px;
     height: 26px;
     margin-left: -48px;
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(91, 140, 255, 0.25);
     transform: rotate(2deg);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
