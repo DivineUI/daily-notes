@@ -358,3 +358,33 @@ input:focus-visible {
         transition: none;
     }
 }
+
+/* sticker mode */
+body.sticker {
+    padding: 10px;
+}
+
+body.sticker .note {
+    max-width: none;
+    min-height: calc(100vh - 20px);
+    transform: none;
+    padding: 24px 16px 16px;
+}
+
+body.sticker .tape,
+body.sticker .icon-btn,
+body.sticker #today-btn,
+body.sticker #carry-btn,
+body.sticker #habit-form,
+body.sticker .reports,
+body.sticker footer {
+    display: none;
+}
+
+body.sticker h1 {
+    font-size: 1.5rem;
+}
+
+body.sticker .daytitle {
+    text-align: left;
+}

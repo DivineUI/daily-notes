@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0f1b33">
+    <title>Daily Sticker</title>
+    <link rel="manifest" href="manifest-sticker.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="sticker">
+    <main class="note">
+        <div class="tape"></div>
+
+        <header>
+            <div class="daynav">
+                <button id="prev" class="icon-btn">&lsaquo;</button>
+                <div class="daytitle">
+                    <h1 id="day-label">Today</h1>
+                    <p id="day-date"></p>
+                </div>
+                <button id="next" class="icon-btn">&rsaquo;</button>
+            </div>
+            <button id="today-btn" class="link" hidden>Back to today</button>
+
+            <div class="meter big">
+                <div id="bar"></div>
+            </div>
+            <p id="progress-text"></p>
+        </header>
+
+        <form id="task-form" class="add-row">
+            <input id="task-input" type="text" placeholder="Add a task..." autocomplete="off" required>
+            <input id="task-time" type="time" title="Reminder time (optional)">
+            <button type="submit">Add</button>
+        </form>
+
+        <section>
+            <h2>Tasks</h2>
+            <ul id="task-list"></ul>
+            <button id="carry-btn" class="link" hidden></button>
+        </section>
+
+        <section>
+            <h2>Every day</h2>
+            <ul id="habit-list"></ul>
+            <form id="habit-form" class="add-row">
+                <input id="habit-input" type="text" autocomplete="off">
+                <input id="habit-time" type="time">
+                <button type="submit">Add</button>
+            </form>
+        </section>
+
+        <section class="reports">
+            <div class="tabs"><button data-range="7" class="active">7</button></div>
+            <div id="report"></div>
+        </section>
+
+        <footer>
+            <button id="notify-btn" class="link">Turn on reminders</button>
+            <button id="export-btn" class="link">Back up</button>
+            <button id="import-btn" class="link">Restore</button>
+            <input id="import-file" type="file" accept="application/json" hidden>
+        </footer>
+
+        <a class="link" href="index.html" target="_blank" rel="noopener">Open full app</a>
+    </main>
+
+    <div id="toast" role="status" hidden></div>
+    <script src="app.js"></script>
+</body>
+
+</html>

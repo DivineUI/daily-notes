@@ -363,6 +363,10 @@ $("import-file").addEventListener("change", (e) => {
 document.addEventListener("visibilitychange", () => {
     if (!document.hidden) { render(); checkReminders(); }
 });
+// keep the sticker and the full app in sync
+window.addEventListener("storage", (e) => {
+    if (e.key === KEY) { data = load(); render(); }
+});
 
 //Start
 if ("serviceWorker" in navigator) {
@@ -371,4 +375,13 @@ if ("serviceWorker" in navigator) {
 updateNotifyBtn();
 render();
 checkReminders();
-setInterval(checkReminders, 20000);
+let lastToday = todayStr();
+setInterval(() => {
+    const now = todayStr();
+    if (now !== lastToday) { // a new day started while the app stayed open
+        if (viewDate === lastToday) viewDate = now;
+        lastToday = now;
+        render();
+    }
+    checkReminders();
+}, 20000);
